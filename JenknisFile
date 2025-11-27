@@ -1,5 +1,5 @@
 pipeline {
-    agent { label "qa-server" }
+    agent { label "slave-1" }
 
     stages {
 
@@ -9,8 +9,8 @@ pipeline {
                     $class: 'GitSCM',
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
-                        url: 'https://github.com/devops5014/student-app.git',
-                        credentialsId: 'github-pass'
+                        url: 'https://github.com/veeraz99/student-app.git',
+                        credentialsId: 'c35ed247-8b81-4519-8d80-2618ead5f519'
                     ]]
                 ])
             }
@@ -31,7 +31,7 @@ pipeline {
         stage('Deploy to Artifactory') {
             steps {
                 configFileProvider(
-                    [configFile(fileId: "da662eac-7a53-4268-beec-69db67ad3a65", variable: 'MAVEN_SETTINGS')]
+                    [configFile(fileId: "fe1ffed2-8e4b-4290-9295-43d25a1ffca8", variable: 'MAVEN_SETTINGS')]
                 ) {
                     sh 'mvn deploy -s $MAVEN_SETTINGS'
                 }
