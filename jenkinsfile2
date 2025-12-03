@@ -1,2 +1,2 @@
-library('shared library')
-resuablepipeline('https://github.com/veeraz99/student-app.git')
+@library('shared library')
+reusablepipeline('https://github.com/veeraz99/student-app.git')
